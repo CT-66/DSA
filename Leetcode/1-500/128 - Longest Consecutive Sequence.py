@@ -11,3 +11,32 @@ class Solution:
                     length += 1
                 longest = max(length, longest)
         return longest
+
+        #####
+
+        # brute force
+        """
+        class Solution:
+        def longestConsecutive(self, nums: List[int]) -> int:
+            nums[:] = sorted(nums)
+
+            res = 1
+            best = 1
+
+
+            if len(nums) == 0:
+                return 0
+
+            for i in range(len(nums)-1):
+                if nums[i+1] == nums[i] + 1:
+                    res += 1
+                elif nums[i+1] == nums[i]:
+                    continue # for duplicate elements
+                else:
+                    res = 1
+
+                best = max(best, res)
+
+            return best
+
+        """
