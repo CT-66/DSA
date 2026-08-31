@@ -10,6 +10,8 @@
  */
 class Solution {
   public:
+    // dummy pointer
+    /*
     ListNode *removeElements(ListNode *head, int val) {
         ListNode *ans = new ListNode(0, head);
         ListNode *dummy = ans;
@@ -25,5 +27,25 @@ class Solution {
         delete ans;
 
         return result;
+    }
+    */
+
+    // without dummy pointer
+    ListNode *removeElements(ListNode *head, int val) {
+        while (head != nullptr && head->val == val) {
+            head = head->next;
+        }
+
+        ListNode *curr = head;
+
+        while (curr != nullptr && curr->next != nullptr) {
+            if (curr->next->val == val) {
+                curr->next = curr->next->next;
+            } else {
+                curr = curr->next;
+            }
+        }
+
+        return head;
     }
 };
